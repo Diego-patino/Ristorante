@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head th:replace="/Layout :: head"></head>
+
+<body>
+
+<nav th:replace="/Layout :: nav"></nav>
+	<div align="center">
+		<h1>Usuarios</h1>
+		<a  th:href="@{/usuario/nuevo}" class= nuevo>Crear Nuevo usuario</a> <br />
+		<br/>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Telefono</th>
+					<th>Direccion</th>
+					<th>Fecha Registro:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario : ${listaUsuario}">
+					<td th:text="${usuario.id_usuario}">Id</td>
+					<td th:text="${usuario.Nombre}">Nombre</td>
+					<td th:text="${usuario.Telefono}">Telefono</td>
+					<td th:text="${usuario.Direccion}">Direccion</td>
+					<td th:text="${usuario.Fecha_registro}">Fecha Registro</td>
+					<td class="botones"><a th:href="@{/usuario/actualizar/{id}(id=${usuario.id_usuario})}" class=actualizar>Actualizar</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{/usuario/eliminar/{id}(id=${usuario.id_usuario})}" class=eliminar>Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

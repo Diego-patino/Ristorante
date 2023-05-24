@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="/Layout :: head"></head>
+
+<body>
+
+	<nav th:replace="/Layout :: nav"></nav>
+	
+	<div align="center">
+		<h1>Pedidos</h1>
+		<a  th:href="@{/pedidos/nuevo}">Create Nuevo Pedido</a> <br />
+		<br/>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>ID Pedido</th>
+					<th>Hora</th>
+					<th>Usuario</th>
+					<th>Repartidor</th>
+					<th>Direccion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pedido : ${listaPedido}">
+					<td th:text="${pedido.id_pedido}">Id</td>
+					<td th:text="${pedido.Fecha_hora}">Fecha</td>
+					<td th:text="${pedido.Usuario}">Usuario</td>
+					<td th:text="${pedido.Repartidor}">Repartidor</td>
+					<td th:text="${pedido.Direccion}">Direccion</td>
+					<td class="button"aon th:href="@{/pedidos/actualizar/{id}(id=${pedido.id_pedido})}">Actualizar</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{/pedidos/eliminar/{id}(id=${pedido.id_pedido})}">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

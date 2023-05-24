@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head th:replace="/Layout :: head"></head>
+
+<body>
+
+	
+	<nav th:replace="/Layout :: nav"></nav>
+	<div align="center">
+		<h1>Repartidores</h1>
+		<a  th:href="@{/repartidores/nuevo}">Crear nuevo Repartidor</a> <br />
+		<br/>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>ID Repartidor</th>
+					<th>Nombre</th>
+					<th>Telefono</th>
+					<th>DNI</th>
+					<th>Estado</th>
+					<th>Edicion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="repartidor : ${listaRepartidor}">
+					<td th:text="${repartidor.id_repartidor}">Id</td>
+					<td th:text="${repartidor.Nombres}">Nombre</td>
+					<td th:text="${repartidor.Telefono}">Telefono</td>
+					<td th:text="${repartidor.dni}">DNI</td>
+					<td th:text="${repartidor.Estado}">Estado</td>
+					<td><a th:href="@{/repartidores/actualizar/{id}(id=${repartidor.id_repartidor})}">Actualizar</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{/repartidores/eliminar/{id}(id=${repartidor.id_repartidor})}">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
